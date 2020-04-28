@@ -18,7 +18,7 @@ import webpackConfig from "$root/webpack.config";
 const app = express();
 const compiler = webpack(webpackConfig);
 
-const baseDir = "../server.sh.runfiles/bazeljs_example/app/app_pkg";
+const baseDir = process.argv[2]
 console.log(baseDir)
 const port = 8080
 
@@ -27,7 +27,7 @@ app.use(express.static(baseDir));
 // Client routes
 app.get("*", (req, res) => {
     console.log(req._parsedOriginalUrl.path)
-    res.sendFile(path.join(__dirname, "./", baseDir, req._parsedOriginalUrl.path));
+    res.sendFile(path.join(baseDir, req._parsedOriginalUrl.path));
 });
 
 app.listen(port, () => {
