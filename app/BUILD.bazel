@@ -1,0 +1,31 @@
+load("@npm//http-server:index.bzl", "http_server")
+load("@npm//webpack-cli:index.bzl", webpack = "webpack_cli")
+
+webpack(
+    name = "bundle",
+    outs = ["bundle.js"],
+    args = [
+        "$(execpath index.js)",
+        "--config",
+        "$(execpath webpack.config.js)",
+        "-o",
+        "$@",
+    ],
+    data = [
+        "index.js",
+        "//app/components",
+        "//app/styles",
+        "webpack.config.js",
+        "@npm//:node_modules",
+        "@npm//react-dom"
+    ],
+)
+
+http_server(
+    name = "app_server",
+    data = [
+        "bundle.js",
+        "index.html",
+    ],
+    templated_args = ["."],
+)

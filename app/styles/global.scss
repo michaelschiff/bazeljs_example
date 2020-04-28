@@ -1,0 +1,81 @@
+
+body {
+    background-color: #0b4315;
+    margin: 0;
+
+    .appRoot {
+        height: 100vh;
+        min-width: 1024px;
+        width: 100vw;
+
+        .topNav {
+            align-items: stretch;
+            color: #86a0ff;
+            display: flex;
+            height: 60px;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .content {
+            height: calc(100% - 60px);
+        }
+    }
+
+    button {
+        border: none;
+        background: transparent;
+        color: inherit;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.dataTableRow {
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #2d353d;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.dataTableOddRow {
+    border-bottom: 1px solid #fff3f9;
+    border-top: 1px solid #2200a9;
+}
+
+.dataTableHeader {
+    align-items: center;
+    background-color: #2d300e;
+    display: flex;
+}
+
+.tokenizerContainer {
+    -webkit-box-shadow: inset 2px 2px 18px 0px rgba(0,4,10,1);
+    -moz-box-shadow: inset 2px 2px 18px 0px rgba(0,4,10,1);
+    box-shadow: inset 2px 2px 18px 0px rgba(0,4,10,1);
+
+    .tokenizerInput {
+        border: none;
+        outline: none;
+        line-height: 24px;
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+}
