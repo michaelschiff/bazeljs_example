@@ -7,7 +7,7 @@ webpack(
     args = [
         "$(execpath index.js)",
         "--config",
-        "$(execpath webpack.config.js)",
+        "$(execpath //:webpack.config.js)",
         "-o",
         "$@",
     ],
@@ -15,10 +15,11 @@ webpack(
         "index.js",
         "//app/components",
         "//app/styles",
-        "webpack.config.js",
+        "//:webpack.config.js",
         "@npm//:node_modules",
         "@npm//react-dom"
     ],
+    visibility = ["//visibility:public"],
 )
 
 http_server(

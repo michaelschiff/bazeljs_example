@@ -1,0 +1,43 @@
+load("@npm//@babel/cli:index.bzl", "babel")
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+
+filegroup(
+    name = "server_srcs",
+    srcs = glob(["*.js"]),
+)
+
+babel(
+    name = "server_babel",
+    data = [
+        ":server_srcs",
+        "@npm//@babel/preset-env",
+        "@npm//@babel/preset-flow",
+        "@npm//@babel/preset-react",
+    ],
+    output_dir = True,
+    args = [
+        "$(locations server_srcs)",
+        "--presets",
+        "@babel/preset-flow",
+        "--presets",
+        "@babel/preset-env",
+        "--out-dir",
+        "$(@D)",
+    ],
+)
+
+nodejs_binary(
+    name = "server",
+    data = [
+        ":server_babel",
+        "//:package.json",
+        "//app:bundle",
+        "@npm//module-alias",
+        "@npm//compression",
+        "@npm//express",
+        "@npm//express-graphql",
+        "@npm//graphql",
+        "@npm//webpack",
+    ],
+    entry_point = ":server_babel",
+)
