@@ -1,5 +1,6 @@
 load("@npm//@babel/cli:index.bzl", "babel")
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@io_bazel_rules_docker//nodejs:image.bzl", "nodejs_image")
 
 filegroup(
     name = "server_srcs",
@@ -28,6 +29,23 @@ babel(
 
 nodejs_binary(
     name = "server",
+    data = [
+        ":server_babel",
+        "//:webpack.config.js",
+        "//:package.json",
+        "//app:app_pkg",
+        "@npm//module-alias",
+        "@npm//compression",
+        "@npm//express",
+        "@npm//express-graphql",
+        "@npm//graphql",
+        "@npm//webpack",
+    ],
+    entry_point = ":server_babel",
+)
+
+nodejs_binary(
+    name = "server_image",
     data = [
         ":server_babel",
         "//:webpack.config.js",
