@@ -30,8 +30,9 @@ nodejs_binary(
     name = "server",
     data = [
         ":server_babel",
+        "//:webpack.config.js",
         "//:package.json",
-        "//app:bundle",
+        "//app:app_pkg",
         "@npm//module-alias",
         "@npm//compression",
         "@npm//express",

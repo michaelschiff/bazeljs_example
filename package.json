@@ -3,15 +3,15 @@
     "version": "0.1.0",
     "private": true,
     "devDependencies": {
-        "@bazel/bazelisk": "latest",
-        "@bazel/buildifier": "latest",
-        "@bazel/ibazel": "latest",
         "@babel/cli": "^7.8.4",
         "@babel/core": "^7.8.7",
         "@babel/node": "^7.8.7",
         "@babel/preset-env": "^7.8.4",
         "@babel/preset-flow": "^7.8.3",
         "@babel/preset-react": "^7.8.3",
+        "@bazel/bazelisk": "latest",
+        "@bazel/buildifier": "latest",
+        "@bazel/ibazel": "latest",
         "babel-loader": "^8.0.6",
         "compression": "^1.7.4",
         "css-loader": "^3.4.2",
@@ -34,5 +34,12 @@
     "scripts": {
         "build": "bazelisk build //...",
         "test": "bazelisk test //..."
+    },
+    "_moduleAliases": {
+        "$root": ".",
+        "$server": "server",
+        "$app": "app",
+        "$jsutils": "jsutils",
+        "$images": "images"
     }
 }

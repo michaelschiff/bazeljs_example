@@ -1,5 +1,6 @@
 load("@npm//http-server:index.bzl", "http_server")
 load("@npm//webpack-cli:index.bzl", webpack = "webpack_cli")
+load("@build_bazel_rules_nodejs//:index.bzl", "pkg_web")
 
 webpack(
     name = "bundle",
@@ -22,11 +23,19 @@ webpack(
     visibility = ["//visibility:public"],
 )
 
+pkg_web(
+    name = "app_pkg",
+    srcs = [
+        "bundle.js",
+        "index.html",
+    ],
+    visibility = ["//visibility:public"],
+)
+
 http_server(
     name = "app_server",
     data = [
-        "bundle.js",
-        "index.html",
+        ":app_pkg",
     ],
     templated_args = ["."],
 )
