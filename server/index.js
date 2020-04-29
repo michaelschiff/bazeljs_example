@@ -12,6 +12,8 @@ import express from "express";
 import graphqlHTTP from "express-graphql";
 import webpack from "webpack";
 
+import { myUtilityFunction } from "$server/utils";
+
 import webpackConfig from "$root/webpack.config";
 
 // Other variables
@@ -21,6 +23,8 @@ const compiler = webpack(webpackConfig);
 const baseDir = process.argv[2]
 console.log(baseDir)
 const port = 8080
+
+myUtilityFunction();
 
 app.use(express.static(baseDir));
 

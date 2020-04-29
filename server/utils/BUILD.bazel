@@ -1,0 +1,5 @@
+filegroup(
+    name = "utils",
+    srcs = glob(["*.js"]),
+    visibility = ["//visibility:public"],
+)

@@ -11,13 +11,14 @@ babel(
     name = "server_babel",
     data = [
         ":server_srcs",
+        "//server/utils",
         "@npm//@babel/preset-env",
         "@npm//@babel/preset-flow",
         "@npm//@babel/preset-react",
     ],
     output_dir = True,
     args = [
-        "$(locations server_srcs)",
+        "server",
         "--presets",
         "@babel/preset-flow",
         "--presets",
@@ -31,6 +32,7 @@ nodejs_binary(
     name = "server",
     data = [
         ":server_babel",
+        "//server/utils",
         "//:webpack.config.js",
         "//:package.json",
         "//app:app_pkg",
