@@ -27,13 +27,6 @@ module.exports = {
             noInfo: true,
         },
     },
-    resolve: {
-        alias: {
-            $images: __dirname + "/images",
-            $app: __dirname + "/app",
-            $server: __dirname + "/server",
-        },
-    },
     module: {
         rules: [
             {
@@ -43,6 +36,18 @@ module.exports = {
                     loader: "babel-loader",
                     options: {
                         presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-flow"],
+                        plugins: [
+                            ["module-resolver", {
+                                "root": ["."],
+                                "alias": {
+                                    "$root": ".",
+                                    "$server": "./server",
+                                    "$app": "./app",
+                                    "$jsutils": "./jsutils",
+                                    "$images": "./images"
+                                }
+                            }]
+                        ]
                     },
                 },
             },

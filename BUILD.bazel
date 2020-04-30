@@ -1,1 +1,1 @@
-exports_files(["package.json", "webpack.config.js"])
+exports_files(["package.json", "webpack.config.js", ".babelrc.json"])

@@ -1,0 +1,15 @@
+{
+    "presets": ["@babel/preset-env", "@babel/preset-flow", "@babel/preset-react"],
+    "plugins": [
+        ["module-resolver", {
+            "root": ["."],
+            "alias": {
+                "$root": ".",
+                "$server": "./server",
+                "$app": "./app",
+                "$jsutils": "./jsutils",
+                "$images": "./images"
+            }
+        }]
+    ] 
+}

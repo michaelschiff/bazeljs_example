@@ -2,3 +2,4 @@
 dist
 bazel-*
 node_modules
+tmp_babel/
