@@ -36,6 +36,11 @@
     "scripts": {
         "build": "bazelisk build //...",
         "test": "bazelisk test //...",
+        "testm": "mocha --require @babel/register ./test/index.test.js",
         "babel": "babel ./server -d tmp_babel"
+    },
+    "dependencies": {
+        "jest-cli": "^26.0.1",
+        "util.promisify": "^1.0.1"
     }
 }
