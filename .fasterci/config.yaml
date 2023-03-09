@@ -1,10 +1,5 @@
 workflows:
   - name: bazel CI
-    secrets:
-      - BAZEL_CI_SA
-    env:
-      GOOGLE_APPLICATION_CREDENTIALS: /tmp/service-account.json
-      AHHHHHH: 1
     image: &image us.gcr.io/fasterci/bazelbuilder:5e59f651dbb5
     on:
       pull_request:
