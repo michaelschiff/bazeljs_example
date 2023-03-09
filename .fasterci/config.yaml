@@ -1,0 +1,9 @@
+workflows:
+  - name: wut
+    image: debian:latest
+    on:
+      pull_request:
+        branches:
+          - master
+    steps:
+        - run: echo "hi"
