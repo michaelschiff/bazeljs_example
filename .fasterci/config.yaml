@@ -4,6 +4,6 @@ workflows:
     on:
       pull_request:
         branches:
-          - main
+          - master
     steps:
         - run: echo "hi"
