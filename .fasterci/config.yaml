@@ -1,6 +1,6 @@
 workflows:
-  - name: bazel CI
-    image: &image us.gcr.io/fasterci/bazelbuilder:5e59f651dbb5
+  - name: wut
+    image: debian:latest
     on:
       pull_request:
         branches:
